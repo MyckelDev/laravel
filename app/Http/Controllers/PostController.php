@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\ViewName;
 
 class PostController extends Controller
 {
@@ -19,6 +20,18 @@ class PostController extends Controller
     public function show(Post $post)
     {
        return view ('posts.show', ['post' => $post]);
+
+    }
+
+    public function create()
+    {
+     
+        return view('posts.create');
+    } 
+
+    public function store()
+    {
+        return 'Process the form';
 
     }
 }
