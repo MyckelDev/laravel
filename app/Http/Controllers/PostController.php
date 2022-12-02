@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\ViewName;
+use App\Http\Requests\SavePostRequest;
 
 class PostController extends Controller
 {
@@ -23,29 +24,23 @@ class PostController extends Controller
 
     }
 
-    public function create()
+    public function create($validated)
     {
      
-        return view('posts.create');
+        return view('posts.create', ['post' => new Post]);
     } 
 
-    public function store(Request $request)
+    public function store( SavePostRequest $request)
     {
 
-        $request->validate([
-            'title'=> ['required', 'min:4'],  
-            'body'=> ['required'],
+      
 
-        ]);
+      
+        Post::create($request-> validated ());
 
-        $post = new Post;
-        $post -> title = $request->input ('title');
-        $post->body = $request->input ('body');
-        $post->save() ;
+        
 
-        session()->flash('status', 'Post Creado!');
-
-        return to_route('posts.index');
+        return to_route('posts.index')->with('statu','Post created!');
     }
 
     public function edit(Post $post)
@@ -53,23 +48,17 @@ class PostController extends Controller
         return view ('posts.edit', ['post' => $post]);
     }
 
-    public function update(Request $request,Post $post)
+    public function update( SavePostRequest $request,Post $post)
 
     {
-        $request->validate([
-            'title'=> ['required', 'min:4'],  
-            'body'=> ['required'],
+        
+      
 
-        ]);
+        $post->update($request -> validated());
 
         
-        $post -> title = $request->input ('title');
-        $post->body = $request->input ('body');
-        $post->save() ;
 
-        session()->flash('status', 'Post udate!');
-
-        return to_route('posts.show', $post);
+        return to_route('posts.show', $post)->with('status', 'Post udate!');;
     
     }
 }
