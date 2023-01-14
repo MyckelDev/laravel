@@ -24,7 +24,7 @@ class PostController extends Controller
 
     }
 
-    public function create($validated)
+    public function create()
     {
      
         return view('posts.create', ['post' => new Post]);
