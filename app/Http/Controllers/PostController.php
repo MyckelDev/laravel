@@ -48,7 +48,7 @@ class PostController extends Controller
         return view ('posts.edit', ['post' => $post]);
     }
 
-    public function update( SavePostRequest $request,Post $post)
+    public function update( SavePostRequest $request, Post $post)
 
     {
         
@@ -58,7 +58,16 @@ class PostController extends Controller
 
         
 
-        return to_route('posts.show', $post)->with('status', 'Post udate!');;
+        return to_route('posts.show', $post)->with('status', 'Post udate!');
     
     }
+
+    
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return to_route('posts.index')->with('status', 'Post deleted!');
+    }
+
+
 }
