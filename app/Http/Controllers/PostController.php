@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\ViewName;
-use App\Http\Requests\SavePostRequest;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -58,7 +58,7 @@ class PostController extends Controller
 
         
 
-        return to_route('posts.show', $post)->with('status', 'Post udate!');
+        return to_route('posts.show', $post)->with('status', 'Post udated!');
     
     }
 
