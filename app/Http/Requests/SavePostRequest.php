@@ -26,6 +26,7 @@ class SavePostRequest extends FormRequest
         return [
             'title'=> ['required', 'min:4'],  
             'body'=> ['required'],
+            
         ];
     }
 }

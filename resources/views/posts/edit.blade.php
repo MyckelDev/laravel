@@ -12,7 +12,7 @@
 
     @include('posts.form-fields')
 
-   
+
     <div class="flex items-center justify-between mt-4">
         <a class="text-sm font-semibold underline border-2 border-transparent rounded dark:text-slate-300 text-slate-600 focus:border-slate-500 focus:outline-none" href="{{ route('posts.index') }}">Regresar</a>
 
@@ -20,4 +20,4 @@
     </div>
 </form>
 
- </x-layouts.app>     
+</x-layouts.app>     
